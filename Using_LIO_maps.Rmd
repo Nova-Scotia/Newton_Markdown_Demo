@@ -15,13 +15,16 @@ knitr::opts_chunk$set(warning = FALSE)
 
 # Use a georeferenced TIF as a background
 
-- I created the .TIF by using the LIO topographic map as my baselayer in ArcGIS Pro, then exporting it as a georeferenced .TIF in ArcGIS Pro
+- I created the .TIF by using the LIO topographic map as my baselayer in ArcGIS Pro, then exporting it as a georeferenced .TIF in ArcGIS Pro.
 - Tip - use a custom large size in ArcGIS Pro and ensure output resolution is high; consider using Map Series for multiple backgrounds
 
 ```{r}
 # install/load required libraries
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load(raster, tidyverse, sf, RStoolbox)
+#if (!require("pacman")) install.packages("pacman")
+#pacman::p_load(raster, tidyverse, sf, RStoolbox)
+library(tidyverse)
+library(raster)
+library(sf)
 ```
 
 ## Bring in georeferenced tif
@@ -140,7 +143,7 @@ ggRGB(crop_mylake, r = 1, g = 2, b = 3) +
 # Best places in Bruce County
 BC <- brick("BruceCounty.tif")
 ggRGB(BC, r = 1, g = 2, b = 3) +
-  theme_void(base_size = 15)
+  theme_bw(base_size = 15)
 ```
 
 
